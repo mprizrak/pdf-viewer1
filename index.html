@@ -1,14 +1,34 @@
-<!doctype html>
-<html lang="pt-br">
-  <meta charset="utf-8">
-  <meta name="viewport" content="width=device-width,initial-scale=1">
-  <title>Visualizador PDF</title>
-  <body style="margin:0;">
-    <!-- Abre o visualizador normal do navegador -->
-    <iframe
-      src="./Introducao-O-Chamado-de-Educar-com-Amor-e-Fe.pdf"
-      style="width:100%; height:100vh; border:none; margin:0; padding:0; display:block;"
-      allowfullscreen
-    ></iframe>
-  </body>
+<!DOCTYPE html>
+<html lang="pt-BR">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Visualizador de PDF</title>
+  <style>
+    html, body {
+      margin: 0;
+      height: 100%;
+      overflow: hidden;
+    }
+    iframe {
+      width: 100%;
+      height: 100%;
+      border: none;
+    }
+  </style>
+</head>
+<body>
+  <script>
+    // Captura o parâmetro ?file=
+    const params = new URLSearchParams(window.location.search);
+    const pdfUrl = params.get("file");
+
+    // Se houver PDF na URL, exibe-o diretamente
+    if (pdfUrl) {
+      document.write(`<iframe src="${pdfUrl}" allowfullscreen></iframe>`);
+    } else {
+      document.write("<h2 style='text-align:center;margin-top:40px;'>Nenhum PDF especificado.</h2>");
+    }
+  </script>
+</body>
 </html>
